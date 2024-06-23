@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Edit Book</title>
+    <body>
+        <!--Header-->
+        <th:block th:replace="layout::header"></th:block>
+        <!--Page body-->
+        <div class="container">
+            <h1>Edit Book</h1>
+            <form th:action="@{/truyens/edit/{id}(id=${truyen.id})}" th:object="${truyen}" method="post">
+                <div class="col-6 mb-3">
+                    <label class="form-label" for="tentruyen">Tên Truyện:</label>
+                    <input class="form-control" type="text" th:field="*{tentruyen}" id="tentruyen">
+                </div>
+                <div class="col-6 mb-3">
+                    <label class="form-label" for="tacgia">Tác Giả:</label>
+                    <input class="form-control" type="text" th:field="*{tacgia}" id="tacgia">
+                </div>
+                <div class="col-6 mb-3">
+                    <label class="form-label" for="nhaxuatban">Nhà Xuất Bản:</label>
+                    <input class="form-control" type="text" th:field="*{nhaxuatban}" id="nhaxuatban">
+                </div>
+                <div class="col-6 mb-3">
+                    <label class="form-label" for="mota">Mô Tả:</label>
+                    <input class="form-control" type="text" th:field="*{mota}" id="mota">
+                </div>
+                <div class="col-6 mb-3">
+                    <label class="form-label" for="gia">Giá bán:</label>
+                    <input class="form-control" type="text" th:field="*{gia}" id="gia">
+                </div>
+                <div class="col-6 mb-3">
+                    <label class="form-label" for="slkho">Số lượng tồn kho:</label>
+                    <input class="form-control" type="number" th:field="*{slkho}" id="slkho">
+                </div>
+                <div class="col-6 mb-3">
+                    <label class="form-label" for="theloai">Category:</label>
+                    <select class="form-control" th:field="*{theloai.id}" id="theloai" >
+                        <option value="">-- DS Thể Loại --</option>
+                        <option th:each="theloai : ${theloais}" th:value="${theloai.id}" th:text="${theloai.tentheloai}"  th:selected="${theloai.id == truyen.theloai.id}"></option>
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Cập nhật">
+                <a th:href="@{/truyens}" class="btn btn-primary">Trở về</a>
+            </form>
+        </div>
+        <!--Footer-->
+        <th:block th:replace="layout::footer"></th:block>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <!-- popper js -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <!-- bootstrap js -->
+        <script src="js/bootstrap.js"></script>
+        <!-- owl slider -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+        </script>
+        <!-- isotope js -->
+        <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+        <!-- nice select -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+        <!-- custom js -->
+        <script src="js/custom.js"></script>
+        <!-- Google Map -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+        </script>
+        <!-- End Google Map -->
+    </body>
+</html>

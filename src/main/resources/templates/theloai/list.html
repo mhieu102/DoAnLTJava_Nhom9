@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Category List</title>
+    <link  rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <!--owl slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <!-- nice select  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
+    <!-- font awesome style -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link  href="/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link  href="/css/responsive.css" rel="stylesheet" />
+</head>
+<body>
+<th:block th:replace="layout::header"></th:block>
+<div class="container">
+    <h1>Category List</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên</th>
+            <th>Chức năng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="theloai: ${theloais}">
+            <td th:text="${theloai.id}"></td>
+            <td th:text="${theloai.tentheloai}"></td>
+            <td>
+                <a th:href="@{/theloais/edit/{id}(id=${theloai.id})}">Sửa</a> |
+                <a th:href="@{/theloais/delete/{id}(id=${theloai.id})}" onclick="return confirm('Bạn có chắc chắn muốn xoá thể loại này?')">Xoá</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/theloais/add">Add Thể Loại</a>
+</div>
+<th:block th:replace="layout::footer"></th:block>
+<!-- jQery -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- popper js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.js"></script>
+<!-- owl slider -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+</script>
+<!-- isotope js -->
+<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+<!-- nice select -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+<!-- custom js -->
+<script src="js/custom.js"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+</script>
+<!-- End Google Map -->
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Thêm Sách</title>
+
+</head>
+<body>
+<th:book th:replace="layout :: header"></th:book>
+<div class="container">
+    <h1>Thêm Sách</h1>
+    <form th:action="@{/truyens/add}" th:object="${truyen}" method="post">
+        <div class="col-6 mb-3">
+            <label class="form-label" for="tentruyen">Tên Truyện:</label>
+            <input class="form-control" type="text" th:field="*{tentruyen}" id="tentruyen">
+            <span th:if="${#fields.hasErrors('tentruyen')}" th:errors="*{tentruyen}" class="text-danger"></span>
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="tacgia">Tác Giả:</label>
+            <input class="form-control" type="text" th:field="*{tacgia}" id="tacgia">
+            <!--<span th:if="${#fields.hasErrors('tacgia')}" th:errors="*{tacgia}" class="text-danger"></span>-->
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="nhaxuatban">Nhà Xuất Bản:</label>
+            <input class="form-control" type="text" th:field="*{nhaxuatban}" id="nhaxuatban">
+            <!--<span th:if="${#fields.hasErrors('nhaxuatban')}" th:errors="*{nhaxuatban}" class="text-danger"></span>-->
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="mota">Mô Tả:</label>
+            <input class="form-control" type="text" th:field="*{mota}" id="mota">
+            <!--<span th:if="${#fields.hasErrors('mota')}" th:errors="*{mota}" class="text-danger"></span>-->
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="gia">Giá bán:</label>
+            <input class="form-control" type="text" th:field="*{gia}" id="gia">
+            <span th:if="${#fields.hasErrors('gia')}" th:errors="*{gia}" class="text-danger"></span>
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="theloai">Danh mục:</label>
+            <select class="form-control" id="theloai" name="theloai.id">
+                <option value="">-- DS Thể Loại --</option>
+                <option th:each="theloai : ${theloais}" th:value="${theloai.id}" th:text="${theloai.tentheloai}"></option>
+            </select>
+            <span th:if="${#fields.hasErrors('theloai')}" th:errors="*{theloai}" class="text-danger"></span>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Thêm mới">
+    </form>
+</div>
+<th:block th:replace="layout::footer"></th:block>
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- popper js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.js"></script>
+<!-- owl slider -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+</script>
+<!-- isotope js -->
+<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+<!-- nice select -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+<!-- custom js -->
+<script src="js/custom.js"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+</script>
+<!-- End Google Map -->
+</body>
+</html>
