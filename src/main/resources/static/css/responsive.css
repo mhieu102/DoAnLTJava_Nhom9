@@ -88,6 +88,11 @@ padding-left: 0;
   }
 }
 
+@media (min-width: 1200px) {
+  .container1 {
+    max-width: 1520px;
+  }
+}
 
 @media (min-width:576px) and (max-width:991px) {
   .rent_solution_container .col-md-4.col-sm-6 {

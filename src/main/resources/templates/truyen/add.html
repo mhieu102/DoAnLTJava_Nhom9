@@ -18,7 +18,7 @@
     <!--owl slider stylesheet -->
     <link rel="stylesheet" type="text/css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css}" />
     <!-- nice select  -->
-    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css}" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
+    <!--<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css}" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />-->
     <!-- font awesome style -->
     <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
     <!-- Custom styles for this template -->
@@ -29,44 +29,51 @@
 <body>
 <th:book th:replace="layout :: header"></th:book>
 
-<div class="container">
-    <h1>Thêm Sách</h1>
-    <form th:action="@{/truyens/add}" th:object="${truyen}" method="post">
+<div class="container1 justify-content-center align-items-center" style="background-color: #222831; padding: 20px; color: white;">
+    <div class="d-flex justify-content-center align-items-center">
+        <h1>Story Add</h1>
+    </div>
+    <form th:action="@{/truyens/add}" th:object="${truyen}" method="post" style="max-width: 1500px; width: 100%; margin: 0 0 0 380px;">
         <div class="col-6 mb-3">
             <label class="form-label" for="tentruyen">Tên Truyện:</label>
-            <input class="form-control" type="text" th:field="*{tentruyen}" id="tentruyen">
+            <input class="form-control" type="text" th:field="*{tentruyen}" id="tentruyen" style="--bs-border-radius: 30px;">
             <span th:if="${#fields.hasErrors('tentruyen')}" th:errors="*{tentruyen}" class="text-danger"></span>
         </div>
         <div class="col-6 mb-3">
             <label class="form-label" for="tacgia">Tác Giả:</label>
-            <input class="form-control" type="text" th:field="*{tacgia}" id="tacgia">
+            <input class="form-control" type="text" th:field="*{tacgia}" id="tacgia" style="--bs-border-radius: 30px;">
             <!--<span th:if="${#fields.hasErrors('tacgia')}" th:errors="*{tacgia}" class="text-danger"></span>-->
         </div>
         <div class="col-6 mb-3">
             <label class="form-label" for="nhaxuatban">Nhà Xuất Bản:</label>
-            <input class="form-control" type="text" th:field="*{nhaxuatban}" id="nhaxuatban">
+            <input class="form-control" type="text" th:field="*{nhaxuatban}" id="nhaxuatban" style="--bs-border-radius: 30px;">
             <!--<span th:if="${#fields.hasErrors('nhaxuatban')}" th:errors="*{nhaxuatban}" class="text-danger"></span>-->
         </div>
         <div class="col-6 mb-3">
             <label class="form-label" for="mota">Mô Tả:</label>
-            <input class="form-control" type="text" th:field="*{mota}" id="mota">
+            <input class="form-control" type="text" th:field="*{mota}" id="mota" style="--bs-border-radius: 30px;">
             <!--<span th:if="${#fields.hasErrors('mota')}" th:errors="*{mota}" class="text-danger"></span>-->
         </div>
         <div class="col-6 mb-3">
             <label class="form-label" for="gia">Giá bán:</label>
-            <input class="form-control" type="text" th:field="*{gia}" id="gia">
+            <input class="form-control" type="text" th:field="*{gia}" id="gia" style="--bs-border-radius: 30px;">
             <span th:if="${#fields.hasErrors('gia')}" th:errors="*{gia}" class="text-danger"></span>
         </div>
         <div class="col-6 mb-3">
             <label class="form-label" for="theloai">Danh mục:</label>
-            <select class="form-control" id="theloai" name="theloai.id">
-                <option value="">-- DS Thể Loại --</option>
+            <select class="form-control" id="theloai" name="theloai.id" style="border-radius: 30px;">
+                <!--<option value="">&#45;&#45; DS Thể Loại &#45;&#45;</option>-->
                 <option th:each="theloai : ${theloais}" th:value="${theloai.id}" th:text="${theloai.tentheloai}"></option>
             </select>
             <span th:if="${#fields.hasErrors('theloai')}" th:errors="*{theloai}" class="text-danger"></span>
         </div>
-        <input type="submit" class="btn btn-primary" value="Thêm mới">
     </form>
+    <div class="d-flex justify-content-center align-items-center">
+        <input type="submit" class="btn btn-primary" value="Thêm mới" style="border-radius: 30px;">
+        <button class="btn btn-primary" style="border-radius: 30px; margin: 0 0 0 30px;">
+            <a th:href="@{/truyens}" style="color: white;">Trở lại</a>
+        </button>
+    </div>
 </div>
 
 <th:block th:replace="layout::footer"></th:block>

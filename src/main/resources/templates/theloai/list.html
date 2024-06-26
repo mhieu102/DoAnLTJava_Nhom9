@@ -29,28 +29,34 @@
 <body>
 <th:block th:replace="layout::header"></th:block>
 
-<div class="container">
-    <h1>Category List</h1>
-    <table class="table">
+<div class="container1" style="background-color: #222831; padding: 20px; color: white;">
+    <div class="d-flex justify-content-center align-items-center">
+        <h1>Category List</h1>
+    </div>
+    <table class="table table-hover" style="color: white; background-color: #222831; --bs-table-color: none; --bs-table-bg: none;">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Tên</th>
-            <th>Chức năng</th>
+            <th class="text-center align-middle">ID</th>
+            <th class="text-center align-middle">Tên</th>
+            <th class="text-center align-middle">Chức năng</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="theloai: ${theloais}">
-            <td th:text="${theloai.id}"></td>
-            <td th:text="${theloai.tentheloai}"></td>
-            <td>
+            <td class="text-center align-middle" th:text="${theloai.id}"></td>
+            <td class="text-center align-middle" th:text="${theloai.tentheloai}"></td>
+            <td class="text-center align-middle">
                 <a th:href="@{/theloais/edit/{id}(id=${theloai.id})}">Sửa</a> |
                 <a th:href="@{/theloais/delete/{id}(id=${theloai.id})}" onclick="return confirm('Bạn có chắc chắn muốn xoá thể loại này?')">Xoá</a>
             </td>
         </tr>
         </tbody>
     </table>
-    <a th:href="@{/theloais/add}">Add Thể Loại</a>
+    <div class="d-flex justify-content-center align-items-center">
+        <button style="border-radius: 30px; border: none; height: 40px; width: 150px;">
+            <a th:href="@{/theloais/add}">Add Thể Loại</a>
+        </button>
+    </div>
 </div>
 
 <th:block th:replace="layout::footer"></th:block>

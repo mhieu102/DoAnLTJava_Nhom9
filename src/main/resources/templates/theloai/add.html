@@ -29,15 +29,20 @@
 <body>
 <th:block th:replace="layout::header"></th:block>
 
-<div class="container">
-    <h1>Thêm Danh Mục</h1>
-    <form th:action="@{/theloais/add}" th:object="${theloai}" method="post">
+<div class="container1" style="background-color: #222831; padding: 20px; color: white;">
+    <div class="d-flex justify-content-center align-items-center">
+        <h1>Category Add</h1>
+    </div>
+    <form th:action="@{/theloais/add}" th:object="${theloai}" method="post" class="d-flex justify-content-center align-items-center">
         <div class="col-6 mb-3">
             <label class="form-label" for="tentheloai">Tên danh mục:</label>
-            <input class="form-control" type="text" th:field="*{tentheloai}" id="tentheloai">
+            <input class="form-control" type="text" th:field="*{tentheloai}" id="tentheloai" style="--bs-border-radius: 30px;">
             <span th:if="${#fields.hasErrors('tentheloai')}" th:errors="*{tentheloai}" class="text-danger"></span>
         </div>
-        <input type="submit" class="btn btn-primary" value="Thêm mới">
+        <input type="submit" class="btn btn-primary" value="Thêm mới" style="margin: 15px 0 0 20px; border-radius: 30px;">
+        <button class="btn btn-primary" style="margin: 15px 0 0 20px; border-radius: 30px;">
+            <a th:href="@{/theloais}" style="color: white;">Trở lại</a>
+        </button>
     </form>
 </div>
 

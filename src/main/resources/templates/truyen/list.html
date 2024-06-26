@@ -29,35 +29,46 @@
 <body>
 <th:block th:replace="layout::header"></th:block>
 
-<div class="container">
-    <h1 th:text="${title}"></h1>
-    <table class="table">
+<div class="container1" style="background-color: #222831; padding: 20px; color: white;">
+    <div class="d-flex justify-content-center align-items-center">
+        <h1>Story List</h1>
+    </div>
+    <table class="table table-hover" style="color: white; --bs-table-color: none; --bs-table-bg: none;">
+        <thead>
         <tr>
-            <th>ID</th>
-            <th>Tên Truyện</th>
-            <th>Tác Giả</th>
-            <th>Nhà Xuất Bản</th>
-            <th>Giá Tiền</th>
-            <th>Số Lượng Kho</th>
-            <th>Thể Loại</th>
-            <th >Chức Năng</th>
+            <th class="text-center align-middle">ID</th>
+            <th class="text-center align-middle">Tên Truyện</th>
+            <th class="text-center align-middle">Tác Giả</th>
+            <th class="text-center align-middle">Nhà Xuất Bản</th>
+            <th class="text-center align-middle">Giá Tiền</th>
+            <th class="text-center align-middle">Số Lượng Kho</th>
+            <th class="text-center align-middle">Thể Loại</th>
+            <th class="text-center align-middle">Chức Năng</th>
         </tr>
+        </thead>
+        <tbody>
         <tr th:each="truyen: ${truyens}">
-            <td th:text="${truyen.id}"></td>
-            <td th:text="${truyen.tentruyen}"></td>
-            <td th:text="${truyen.nhaxuatban}"></td>
-            <td th:text="${truyen.tacgia}"></td>
-            <td th:text="${truyen.gia}"></td>
-            <td th:text="${truyen.slkho}"></td>
-            <td th:text="${truyen.theloai.tentheloai}"></td>
-            <td >
+            <td class="text-center align-middle" th:text="${truyen.tentruyen}"></td>
+            <td class="text-center align-middle" th:text="${truyen.nhaxuatban}"></td>
+            <td class="text-center align-middle" th:text="${truyen.tacgia}"></td>
+            <td class="text-center align-middle" th:text="${truyen.id}"></td>
+            <td class="text-center align-middle" th:text="${truyen.gia}"></td>
+            <td class="text-center align-middle" th:text="${truyen.slkho}"></td>
+            <td class="text-center align-middle" th:text="${truyen.theloai.tentheloai}"></td>
+            <td class="text-center align-middle">
                 <a th:href="@{/truyens/edit/{id}(id=${truyen.id})}">Sửa</a> |
                 <a th:href="@{/truyens/delete/{id}(id=${truyen.id})}" onclick="deleteTruyen(this); return false" class="text-danger">Xóa</a>
             </td>
         </tr>
+        </tbody>
     </table>
-    <a href="/truyens/add">Add Truyện</a>
+    <div class="d-flex justify-content-center align-items-center">
+        <button style="border-radius: 30px; border: none; height: 40px; width: 150px;">
+            <a th:href="@{/truyens/add}">Add Truyện</a>
+        </button>
+    </div>
 </div>
+
 <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
 <script th:inline="javascript">
     function deleteTruyen(link){
