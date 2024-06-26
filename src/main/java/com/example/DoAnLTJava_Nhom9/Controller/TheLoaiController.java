@@ -29,7 +29,6 @@ public class TheLoaiController {
     @GetMapping("/add")
     public String showAddTheLoaiForm(Model model) {
         model.addAttribute("theloai", new TheLoai());
-
         return "theloai/add";
     }
 
